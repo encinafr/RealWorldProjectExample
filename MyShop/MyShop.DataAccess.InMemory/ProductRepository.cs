@@ -18,7 +18,7 @@ namespace MyShop.DataAccess.InMemory
         {
             products = cache["products"] as List<Product>;
 
-            if(products != null)
+            if(products == null)
             {
                 products = new List<Product>();
             }
