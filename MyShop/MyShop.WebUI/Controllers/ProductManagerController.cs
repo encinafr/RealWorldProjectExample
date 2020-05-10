@@ -50,7 +50,7 @@ namespace MyShop.WebUI.Controllers
                 if(file != null)
                 {
                     product.Image = product.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//ProductImage//") + product.Image);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
                 }
                 _context.Insert(product);
                 _context.Commit();
