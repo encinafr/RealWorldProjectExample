@@ -22,7 +22,8 @@ namespace MyShop.WebUI.Tests.Mocks
             _response = new MockResponse(_cookies);
         }
 
-        public override IPrincipal User {
+        public override IPrincipal User
+        {
             get
             {
                 return this._fakeUser;
@@ -31,6 +32,7 @@ namespace MyShop.WebUI.Tests.Mocks
             {
                 this._fakeUser = value;
             }
+        }
 
         public override HttpRequestBase Request
         {
