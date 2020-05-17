@@ -10,20 +10,22 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyShop.Core.Contracts;
 using MyShop.Core.Models;
+using MyShop.WebUI.Common.BaseControllers;
 using MyShop.WebUI.Models;
+using MyShopDataAccess.SQL.Repositories;
 
 namespace MyShop.WebUI.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : ApiBaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IRepository<Customer> _customerRepository;
 
-        public AccountController(IRepository<Customer> customerRepository )
+        public AccountController( )
         {
-            _customerRepository = customerRepository;
+            _customerRepository = _uow.Repository<SQLRepository<Customer>>();
         }
 
         public ApplicationSignInManager SignInManager

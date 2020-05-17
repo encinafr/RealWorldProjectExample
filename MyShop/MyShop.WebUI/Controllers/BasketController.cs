@@ -1,5 +1,7 @@
 ﻿using MyShop.Core.Contracts;
 using MyShop.Core.Models;
+using MyShop.WebUI.Common.BaseControllers;
+using MyShopDataAccess.SQL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +10,17 @@ using System.Web.Mvc;
 
 namespace MyShop.WebUI.Controllers
 {
-    public class BasketController : Controller
+    public class BasketController : ApiBaseController
     {
         IRepository<Customer> _customerRepository;
         IBasketSerivce _basketSerivce;
         IOrderService _orderService;
 
-        public BasketController(IBasketSerivce basketSerivce, IOrderService orderService, IRepository<Customer> customerRepository)
+        public BasketController(IBasketSerivce basketSerivce, IOrderService orderService)
         {
             _basketSerivce = basketSerivce;
             _orderService = orderService;
-            _customerRepository = customerRepository;
+            _customerRepository = _uow.Repository<SQLRepository<Customer>>();
         }
         // GET: Basket
         public ActionResult Index()
